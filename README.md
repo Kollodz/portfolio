@@ -1,32 +1,40 @@
 # Portfólio — Victor Renan Kolodziejski Dias
 
-Site institucional em HTML5, CSS3 e JavaScript puro (sem frameworks e sem etapa de build), apresentando a trajetória em Supply Chain, as competências em automação, dados e IA, a plataforma **MB Automation** e outros projetos (Planeja MB e automações em Python).
+Site em HTML5, CSS3 e JavaScript puro (sem frameworks e sem build), em tema claro, apresentando os produtos **MB Automation Platform** e **Planeja MB**, as automações em Python, os resultados e a trajetória em Supply Chain.
 
 ## Estrutura
 
 ```
-index.html   → conteúdo e SEO
-styles.css   → estilos (paleta e tokens em :root)
-script.js    → animações, contadores, carrossel, lightbox e formulário
-.nojekyll    → faz o GitHub Pages servir os arquivos como estão
+index.html        → conteúdo e SEO
+styles.css        → estilos (paleta em :root)
+script.js         → abas, animações, galeria, formulário
+data.js           → TODOS os números do site (edite aqui)
+assets/
+  victor.jpg      → sua foto (proporção 4:5); sem ela, aparece o monograma VK
+  gallery/        → screenshots 01.png … 08.png da galeria
+.nojekyll         → GitHub Pages serve os arquivos como estão
 ```
+
+## Atualizar os números
+
+Abra `data.js` e altere os valores. Hero, painel executivo, resultados e gráfico em cascata acompanham automaticamente, inclusive a proporção das barras.
+
+## Fotos e screenshots
+
+- Foto: salve em `assets/victor.jpg`.
+- Galeria: salve `01.png` a `08.png` em `assets/gallery/`. Ordem sugerida: dashboard executivo, Discovery, Priorização, Projetos e Kanban, Business Case, Governança e riscos, Planejamento Compartilhado (Planeja MB), Programação (Planeja MB).
+- Antes de publicar, confira se os prints não mostram nomes de clientes, dados reais de pedidos, abas pessoais do navegador ou credenciais.
 
 ## Publicar no GitHub Pages
 
-1. Crie um repositório novo no GitHub (por exemplo `portfolio`) e envie estes arquivos na raiz.
-2. No repositório, abra **Settings → Pages**.
-3. Em **Build and deployment**, escolha **Deploy from a branch**, selecione a branch `main` e a pasta `/ (root)`, e salve.
-4. Em alguns minutos o site fica em `https://SEU-USUARIO.github.io/portfolio/`.
+1. Envie todos os arquivos para a raiz do repositório.
+2. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`.
+3. O endereço aparece em poucos minutos: `https://kollodz.github.io/NOME-DO-REPOSITORIO/` (ou `https://kollodz.github.io` se o repositório se chamar `Kollodz.github.io`).
 
-Se preferir o endereço `https://SEU-USUARIO.github.io`, nomeie o repositório exatamente como `SEU-USUARIO.github.io`.
+## Formulário de contato
 
-## O que personalizar antes de publicar
-
-- **Resultados** e **métricas do topo**: os números são ilustrativos; ajuste os atributos `data-count` com valores reais.
-- **Galeria**: substituir os 8 espaços reservados por screenshots reais da MB Automation (sem dados sensíveis).
-- **Formulário de contato**: hoje só valida no navegador. Para receber mensagens, conecte a um serviço de formulários ou ao Supabase.
-- **Foto**: trocar a ilustração da seção Sobre Mim por uma foto profissional.
+Ao enviar, o formulário abre o aplicativo de e-mail do visitante com a mensagem já preenchida para o seu endereço. Não depende de servidor.
 
 ## Cuidado com informações da empresa
 
-O repositório é público. Os textos dos projetos não citam clientes, endereços internos, caminhos de rede nem credenciais. Mantenha esse padrão ao adicionar screenshots ou trechos de código.
+O repositório é público. Os textos não citam clientes, endereços internos, caminhos de rede nem credenciais. Os indicadores financeiros em `data.js` são da empresa: confirme que a divulgação está autorizada.
