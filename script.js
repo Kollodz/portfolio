@@ -41,7 +41,6 @@
     initMetrics();
     initWaterfall();
     initObservers();
-    initGallery();
     initContactForm();
     initToTop();
     var y = document.getElementById('footerYear');
@@ -229,73 +228,6 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     targets.forEach(function (el) { observer.observe(el); });
-  }
-
-  /* ---------- Galeria: carrossel + lightbox ---------- */
-  function initGallery() {
-    var track = document.getElementById('galleryTrack');
-    if (!track) return;
-    var shots = Array.prototype.slice.call(track.querySelectorAll('.shot'));
-    var prev = document.getElementById('galleryPrev');
-    var next = document.getElementById('galleryNext');
-
-    function scrollCards(dir) {
-      var card = shots[0];
-      var amount = card ? card.offsetWidth + 18 : 320;
-      track.scrollBy({ left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth' });
-    }
-    prev.addEventListener('click', function () { scrollCards(-1); });
-    next.addEventListener('click', function () { scrollCards(1); });
-
-    var box = document.getElementById('lightbox');
-    var media = document.getElementById('lbMedia');
-    var caption = document.getElementById('lbCaption');
-    var current = 0, lastFocus = null;
-
-    function render(i) {
-      current = (i + shots.length) % shots.length;
-      var shot = shots[current];
-      var img = shot.querySelector('img');
-      media.innerHTML = '';
-      if (img) {
-        var clone = document.createElement('img');
-        clone.src = img.src;
-        clone.alt = shot.getAttribute('data-label') || '';
-        media.appendChild(clone);
-      } else {
-        var ph = document.createElement('div');
-        ph.className = 'lb-placeholder';
-        ph.textContent = 'Screenshot ' + String(current + 1).padStart(2, '0') + ' — adicione em assets/gallery/';
-        media.appendChild(ph);
-      }
-      caption.textContent = String(current + 1).padStart(2, '0') + ' · ' + (shot.getAttribute('data-label') || '');
-    }
-    function open(i) {
-      lastFocus = document.activeElement;
-      render(i);
-      box.classList.add('open');
-      box.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('lbClose').focus();
-    }
-    function close() {
-      box.classList.remove('open');
-      box.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (lastFocus) lastFocus.focus();
-    }
-
-    shots.forEach(function (shot, i) { shot.addEventListener('click', function () { open(i); }); });
-    document.getElementById('lbClose').addEventListener('click', close);
-    document.getElementById('lbPrev').addEventListener('click', function () { render(current - 1); });
-    document.getElementById('lbNext').addEventListener('click', function () { render(current + 1); });
-    box.addEventListener('click', function (e) { if (e.target === box) close(); });
-    document.addEventListener('keydown', function (e) {
-      if (!box.classList.contains('open')) return;
-      if (e.key === 'Escape') close();
-      else if (e.key === 'ArrowLeft') render(current - 1);
-      else if (e.key === 'ArrowRight') render(current + 1);
-    });
   }
 
   /* ---------- Formulário: abre o e-mail já preenchido ---------- */
